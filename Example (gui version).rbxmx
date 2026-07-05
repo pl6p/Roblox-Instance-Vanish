@@ -2,7 +2,7 @@
 	<Meta name="ExplicitAutoJoints">true</Meta>
 	<External>null</External>
 	<External>nil</External>
-	<Item class="Folder" referent="RBX542403ACF6304A3F9B11662172F91AEF">
+	<Item class="Folder" referent="RBXE3570625AC914C7385EC3FAF55DD94FB">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -11,7 +11,7 @@
 			<int64 name="SourceAssetId">-1</int64>
 			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 		</Properties>
-		<Item class="Folder" referent="RBX1D637E488DD3425DBB2A465FCC2D28A6">
+		<Item class="Folder" referent="RBX0D96E5E691564CEA85DA19A43C60C94F">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -20,7 +20,7 @@
 				<int64 name="SourceAssetId">-1</int64>
 				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 			</Properties>
-			<Item class="Script" referent="RBX7A76E3B5737A47D8A68392CFF140BE4A">
+			<Item class="Script" referent="RBX25DFFF43337945A8AD4BFA1BC0C163EE">
 				<Properties>
 					<ProtectedString name="Source"><![CDATA[local ModulesMn = script:WaitForChild("VanishingM")
 local VanishingM = require(ModulesMn)
@@ -32,7 +32,7 @@ require(script.LocalSide)()]]></ProtectedString>
 					<bool name="Disabled">false</bool>
 					<Content name="LinkedSource"><null></null></Content>
 					<token name="RunContext">0</token>
-					<string name="ScriptGuid">{EDF6405F-3ED1-4C1F-B5D7-E9837D6557F2}</string>
+					<string name="ScriptGuid">{F7DF1E14-CC64-41A3-B144-6AB4627D1547}</string>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 					<bool name="DefinesCapabilities">false</bool>
@@ -40,7 +40,7 @@ require(script.LocalSide)()]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 				</Properties>
-				<Item class="ModuleScript" referent="RBX4BFB3E86288443528B0A5CC03698848A">
+				<Item class="ModuleScript" referent="RBX5AF1DA4F2E774D59B29BD3B429AEC90E">
 					<Properties>
 						<Content name="LinkedSource"><null></null></Content>
 						<ProtectedString name="Source"><![CDATA[local VanishingM = {}
@@ -105,7 +105,7 @@ function VanishingM.GetVanedPlrs()
 end
 
 return VanishingM]]></ProtectedString>
-						<string name="ScriptGuid">{6FA9FC21-184A-48BF-B171-520D82B96C99}</string>
+						<string name="ScriptGuid">{98BA1394-B1D4-46DD-990C-4B4FC177F93C}</string>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 						<bool name="DefinesCapabilities">false</bool>
@@ -114,67 +114,7 @@ return VanishingM]]></ProtectedString>
 						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 					</Properties>
 				</Item>
-				<Item class="Folder" referent="RBX60E0359FB31F4E4580D75360EE9FDA41">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-						<bool name="DefinesCapabilities">false</bool>
-						<string name="Name">Vanish</string>
-						<int64 name="SourceAssetId">-1</int64>
-						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
-					</Properties>
-					<Item class="RemoteEvent" referent="RBXE32B08288EE448229CD598CB4EF0E263">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-							<bool name="DefinesCapabilities">false</bool>
-							<string name="Name">GiveTheVanishFF</string>
-							<int64 name="SourceAssetId">-1</int64>
-							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
-						</Properties>
-					</Item>
-					<Item class="RemoteEvent" referent="RBXF6A281EC85E54EB48DC69F0FEAAE7CB2">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-							<bool name="DefinesCapabilities">false</bool>
-							<string name="Name">SendToVanishFF</string>
-							<int64 name="SourceAssetId">-1</int64>
-							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
-						</Properties>
-					</Item>
-					<Item class="RemoteEvent" referent="RBX3B5312BBF8044D3EB406B1B33BB49F7A">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-							<bool name="DefinesCapabilities">false</bool>
-							<string name="Name">GiveTheVanish</string>
-							<int64 name="SourceAssetId">-1</int64>
-							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
-						</Properties>
-					</Item>
-					<Item class="RemoteEvent" referent="RBX7ADB16F5AEA447238A378DF49C81D0AB">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-							<bool name="DefinesCapabilities">false</bool>
-							<string name="Name">SendToVanish</string>
-							<int64 name="SourceAssetId">-1</int64>
-							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
-						</Properties>
-					</Item>
-					<Item class="Folder" referent="RBXD30DAE313AC34422B3EE986F0A220810">
-						<Properties>
-							<BinaryString name="AttributesSerialize"></BinaryString>
-							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-							<bool name="DefinesCapabilities">false</bool>
-							<string name="Name">VanishTemp</string>
-							<int64 name="SourceAssetId">-1</int64>
-							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
-						</Properties>
-					</Item>
-				</Item>
-				<Item class="LocalScript" referent="RBXC5E0FDEDB3D04865A9933CA84EACE31C">
+				<Item class="LocalScript" referent="RBXA3EFA5247DC7468ABF8526B440A330FF">
 					<Properties>
 						<ProtectedString name="Source"><![CDATA[local plrname = game:GetService("Players").LocalPlayer.Name
 local remotes = game:GetService("ReplicatedStorage"):WaitForChild("Vanish")
@@ -188,7 +128,7 @@ SendToVanishFF.FireServer(plrname, "lol") -- Turn Off vanish for u]]></Protected
 						<bool name="Disabled">true</bool>
 						<Content name="LinkedSource"><null></null></Content>
 						<token name="RunContext">0</token>
-						<string name="ScriptGuid">{A26991F6-E964-4355-9B16-7248E1103D76}</string>
+						<string name="ScriptGuid">{BFD99C27-09D2-4498-BC14-0252693831D6}</string>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 						<bool name="DefinesCapabilities">false</bool>
@@ -196,7 +136,7 @@ SendToVanishFF.FireServer(plrname, "lol") -- Turn Off vanish for u]]></Protected
 						<int64 name="SourceAssetId">-1</int64>
 						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 					</Properties>
-					<Item class="TextButton" referent="RBX64FB2AFB67A44CA4B47075A5813F3C22">
+					<Item class="TextButton" referent="RBX3A95D4319EC34BF096C9668D02B7822B">
 						<Properties>
 							<Font name="FontFace">
 								<Family><url>rbxassetid://12187365364</url></Family>
@@ -296,7 +236,7 @@ SendToVanishFF.FireServer(plrname, "lol") -- Turn Off vanish for u]]></Protected
 							<int64 name="SourceAssetId">-1</int64>
 							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 						</Properties>
-						<Item class="LocalScript" referent="RBXCC70A6A21C9B43268CDD0AC6ADBD1BAC">
+						<Item class="LocalScript" referent="RBXDB6678D66FC9454CB41A3013B8985D32">
 							<Properties>
 								<ProtectedString name="Source"><![CDATA[local check = script.Parent.Enabled.Value
 script.Parent.MouseButton1Click:Connect(function()
@@ -322,7 +262,7 @@ end)]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{6D5209BB-95AB-4B88-AF11-5EE2E16E4469}</string>
+								<string name="ScriptGuid">{95E62C45-3831-43F9-80ED-7382F50DAD90}</string>
 								<BinaryString name="AttributesSerialize"></BinaryString>
 								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 								<bool name="DefinesCapabilities">false</bool>
@@ -331,7 +271,7 @@ end)]]></ProtectedString>
 								<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 							</Properties>
 						</Item>
-						<Item class="BoolValue" referent="RBXA9E191A7433A4665B10A88A4AA9C43E5">
+						<Item class="BoolValue" referent="RBXB11ECC548EC54D78B4EA605B3F8C8E65">
 							<Properties>
 								<bool name="Value">false</bool>
 								<BinaryString name="AttributesSerialize"></BinaryString>
@@ -344,7 +284,7 @@ end)]]></ProtectedString>
 						</Item>
 					</Item>
 				</Item>
-				<Item class="ModuleScript" referent="RBXB832A0C505AB446287946F05F4E0A143">
+				<Item class="ModuleScript" referent="RBX69DF0A3C525F4988A029661A29273944">
 					<Properties>
 						<Content name="LinkedSource"><null></null></Content>
 						<ProtectedString name="Source"><![CDATA[return function(...)
@@ -357,7 +297,7 @@ game:GetService("Players").PlayerAdded:Connect(function(player)
 		end
 	end)
 end]]></ProtectedString>
-						<string name="ScriptGuid">{224630D2-22AA-4DA5-B501-CB507DA77E17}</string>
+						<string name="ScriptGuid">{9987FDFE-E7CA-4A40-9B41-AFFC5AA61B24}</string>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 						<bool name="DefinesCapabilities">false</bool>
@@ -365,7 +305,7 @@ end]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 					</Properties>
-					<Item class="ScreenGui" referent="RBXCAA3D541B4F0409BBFE4BC6E06AC5370">
+					<Item class="ScreenGui" referent="RBXC7F94E6E6D0A4211B92A09D941DDB2C9">
 						<Properties>
 							<bool name="ClipToDeviceSafeArea">true</bool>
 							<int name="DisplayOrder">0</int>
@@ -388,7 +328,7 @@ end]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 						</Properties>
-						<Item class="LocalScript" referent="RBX80856F6C4E524C7F9EE8983CBD6F4AD8">
+						<Item class="LocalScript" referent="RBX276123E119444569B056F7025DA1BA4E">
 							<Properties>
 								<ProtectedString name="Source"><![CDATA[local VanishedPlrs = {}
 local Vanish = game:GetService("ReplicatedStorage"):WaitForChild("Vanish")
@@ -399,7 +339,7 @@ local GiveTheVanishFF = Vanish.GiveTheVanishFF
 
 
 GiveTheVanish.OnClientEvent:Connect(function(plrname)
-	local localplr = game:GetService("Players").localplr
+	local localplr = game:GetService("Players").LocalPlayer
 	if plrname.Name == localplr.Name then
 		--warn("VAN! we dont destroyed yourself")
 		return
@@ -414,7 +354,7 @@ GiveTheVanish.OnClientEvent:Connect(function(plrname)
 	--warn("VAN! Player " .. plrname.Name .. " destroyed")
 end)
 GiveTheVanishFF.OnClientEvent:Connect(function(plrname)
-	local localplr = game:GetService("Players").localplr
+	local localplr = game:GetService("Players").LocalPlayer
 	if localplr.Name == plrname.Name then
 		--warn("VAN! dont creating yourself")
 		return
@@ -431,7 +371,7 @@ end)	]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{4D82CF69-F3EF-40EA-B773-ED3C16F4010D}</string>
+								<string name="ScriptGuid">{364AB2B2-DF08-4BA6-AE60-B1A4005CB5C1}</string>
 								<BinaryString name="AttributesSerialize"></BinaryString>
 								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 								<bool name="DefinesCapabilities">false</bool>
@@ -442,9 +382,69 @@ end)	]]></ProtectedString>
 						</Item>
 					</Item>
 				</Item>
+				<Item class="Folder" referent="RBX3EC8501DABEB4F67A69261A23B3B24E3">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<string name="Name">Vanish</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					</Properties>
+					<Item class="RemoteEvent" referent="RBX533400DB67F8419F98178BDAB043268C">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<string name="Name">GiveTheVanishFF</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						</Properties>
+					</Item>
+					<Item class="RemoteEvent" referent="RBX43299820CD274665880B54C5886C3AC2">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<string name="Name">SendToVanishFF</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						</Properties>
+					</Item>
+					<Item class="RemoteEvent" referent="RBX488930957CE4493D8909970D945DFE6D">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<string name="Name">GiveTheVanish</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						</Properties>
+					</Item>
+					<Item class="RemoteEvent" referent="RBX8F679B4DB5E74CD880D7897A717D41C0">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<string name="Name">SendToVanish</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						</Properties>
+					</Item>
+					<Item class="Folder" referent="RBXBD5F36B5679C442BB591C4C1F4F2E746">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<string name="Name">VanishTemp</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						</Properties>
+					</Item>
+				</Item>
 			</Item>
 		</Item>
-		<Item class="Folder" referent="RBXD82BA22E519E4A28A08FCA77AF398C55">
+		<Item class="Folder" referent="RBX3040121EFE2247F794F00F4876A279DF">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -453,7 +453,7 @@ end)	]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 			</Properties>
-			<Item class="ScreenGui" referent="RBX8163F73977BE4A6E8FAB0FF6C1CA2C3F">
+			<Item class="ScreenGui" referent="RBX9B197F0A2BD0457F9E5B6AF841F17272">
 				<Properties>
 					<bool name="ClipToDeviceSafeArea">true</bool>
 					<int name="DisplayOrder">0</int>
@@ -476,7 +476,7 @@ end)	]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 				</Properties>
-				<Item class="CanvasGroup" referent="RBX19395050E2314070A8F4C9D0F7F5F2C6">
+				<Item class="CanvasGroup" referent="RBX3B1A22AF7AA34D8F9082478768E3F6B3">
 					<Properties>
 						<Color3 name="GroupColor3">
 							<R>1</R>
@@ -545,7 +545,7 @@ end)	]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 					</Properties>
-					<Item class="BoolValue" referent="RBXD358AAD4639E438489B79EAE3FB51976">
+					<Item class="BoolValue" referent="RBX014A62BFF82A43A1A6B5273D7BBDE88D">
 						<Properties>
 							<bool name="Value">false</bool>
 							<BinaryString name="AttributesSerialize"></BinaryString>
@@ -556,7 +556,7 @@ end)	]]></ProtectedString>
 							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 						</Properties>
 					</Item>
-					<Item class="TextButton" referent="RBX04324A53E8174068B262D6C32F5C4309">
+					<Item class="TextButton" referent="RBX1B781D465D43413CB7427D53961B49E6">
 						<Properties>
 							<Font name="FontFace">
 								<Family><url>rbxassetid://12187365364</url></Family>
@@ -656,7 +656,7 @@ end)	]]></ProtectedString>
 							<int64 name="SourceAssetId">-1</int64>
 							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 						</Properties>
-						<Item class="LocalScript" referent="RBX0F720EAAC5E340179185F17CC7B3AA48">
+						<Item class="LocalScript" referent="RBXFC5B3CD2F4854410B554C9C307ECB8A6">
 							<Properties>
 								<ProtectedString name="Source"><![CDATA[local check = script.Parent.Parent.Enabled
 script.Parent.MouseButton1Click:Connect(function()
@@ -682,7 +682,7 @@ end)]]></ProtectedString>
 								<bool name="Disabled">false</bool>
 								<Content name="LinkedSource"><null></null></Content>
 								<token name="RunContext">0</token>
-								<string name="ScriptGuid">{48D1FEAF-5C00-4AFE-BFED-A2FA1210F093}</string>
+								<string name="ScriptGuid">{C863312D-A294-4085-B57B-6D5D7422F456}</string>
 								<BinaryString name="AttributesSerialize"></BinaryString>
 								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 								<bool name="DefinesCapabilities">false</bool>
