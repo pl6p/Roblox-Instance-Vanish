@@ -280,9 +280,9 @@ SendToVanishFF.FireServer(plrname, "lol") -- Turn Off vanish for u]]></Protected
 				</Properties>
 				<Item class="LocalScript" referent="RBX5029B43070E1424B9EFE5D70787A9A9F">
 					<Properties>
-						<ProtectedString name="Source"><![CDATA[local check = script.Parent.Parent.Enabled
+						<ProtectedString name="Source"><![CDATA[local check = script.Parent.Enabled.Value
 script.Parent.MouseButton1Click:Connect(function()
-	local currentCheck = script.Parent.Parent.Enabled.Value
+	local currentCheck = script.Parent.Enabled.Value
 	if currentCheck == false then
 		script.Parent.Text = "Vanish: Enabled"
 		script.Parent.TextColor3 = Color3.fromRGB(67, 255, 95)
@@ -290,7 +290,7 @@ script.Parent.MouseButton1Click:Connect(function()
 		local plr = game:GetService("Players").LocalPlayer
 		local plrname = game:GetService("Players").LocalPlayer.Name
 		event:FireServer(plrname, "lol")
-		script.Parent.Parent.Enabled.Value = true
+		script.Parent.Enabled.Value = true
 	elseif currentCheck == true then
 		script.Parent.Text = "Vanish: Disabled"
 		script.Parent.TextColor3 = Color3.fromRGB(255, 40, 12)
@@ -298,7 +298,7 @@ script.Parent.MouseButton1Click:Connect(function()
 		local plr = game:GetService("Players").LocalPlayer
 		local plrname = game:GetService("Players").LocalPlayer.Name
 		event:FireServer(plrname, "lol")
-		script.Parent.Parent.Enabled.Value = false
+		script.Parent.Enabled.Value = false
 	end
 end)]]></ProtectedString>
 						<bool name="Disabled">false</bool>
@@ -313,7 +313,7 @@ end)]]></ProtectedString>
 						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 					</Properties>
 				</Item>
-				<Item class="BoolValue" referent="RBXD2E3F655F91E4284B6806108DB49CF93">
+				<Item class="BoolValue" referent="RBX33F26971FC2C4B6FA8E9C558E4DEAA3E">
 					<Properties>
 						<bool name="Value">false</bool>
 						<BinaryString name="AttributesSerialize"></BinaryString>
