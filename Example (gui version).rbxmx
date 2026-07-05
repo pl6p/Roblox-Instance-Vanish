@@ -1,0 +1,702 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Folder" referent="RBX77635ABAB50A49BBB5BEF8D6B2FB92BF">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<string name="Name">.</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+		</Properties>
+		<Item class="Folder" referent="RBX4EF7D9735DC643C4924CE0E1B7141E5F">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<string name="Name">ServerScriptService</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			</Properties>
+			<Item class="Script" referent="RBX3D4C3837A7764F0DAB9508811F9C1AE1">
+				<Properties>
+					<ProtectedString name="Source"><![CDATA[local ModulesMn = script:WaitForChild("VanishingM")
+local VanishingM = require(ModulesMn)
+local remotes = script.Vanish:Clone() ; remotes.Parent = game:GetService("ReplicatedStorage")
+
+--in
+VanishingM.Init(remotes)
+require(script.LocalSide)()]]></ProtectedString>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<token name="RunContext">0</token>
+					<string name="ScriptGuid">{DB2867EF-D590-4462-AF6C-43482C672A99}</string>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<string name="Name">Vanish</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				</Properties>
+				<Item class="ModuleScript" referent="RBXB84D7F7179F94CEEA03658172091D57D">
+					<Properties>
+						<Content name="LinkedSource"><null></null></Content>
+						<ProtectedString name="Source"><![CDATA[local VanishingM = {}
+local VanedPlrs = {}
+local Players = game:GetService("Players")
+local function GetVanishRemotes(remotes)
+	local Vanish = remotes
+	return {
+		SendToVanish = Vanish.SendToVanish,
+		SendToVanishFF = Vanish.SendToVanishFF,
+		GiveTheVanish = Vanish.GiveTheVanish,
+		GiveTheVanishFF = Vanish.GiveTheVanishFF
+	}
+end
+
+local function SetVanishState(plr, state, remotes)
+	VanedPlrs[plr] = state or nil
+	local action = state and "vanished" or "created"
+	--print(("VAN! Server %s %s"):format(action, plr.Name))
+	local players = Players:GetPlayers()
+	local remoteEvent = state and remotes.GiveTheVanish or remotes.GiveTheVanishFF
+	for i = 1, #players do
+		local player = players[i]
+		if player ~= plr then
+			remoteEvent:FireClient(player, plr)
+		end
+	end
+end
+
+function VanishingM.Init(Vanish)
+	local remotes = GetVanishRemotes(Vanish)
+	remotes.SendToVanish.OnServerEvent:Connect(function(plr)
+		SetVanishState(plr, true, remotes)
+	end)
+	remotes.SendToVanishFF.OnServerEvent:Connect(function(plr)
+		SetVanishState(plr, false, remotes)
+	end)
+	Players.PlayerAdded:Connect(function(NewPlr)
+		for VanedPlr in pairs(VanedPlrs) do
+			if VanedPlr.Parent then
+				remotes.GiveTheVanish:FireClient(NewPlr, VanedPlr)
+			end
+		end
+	end)
+	Players.PlayerRemoving:Connect(function(LeavinPLR)
+		VanedPlrs[LeavinPLR] = nil
+	end)
+end
+
+function VanishingM.IsVanished(player)
+	return VanedPlrs[player] == true
+end
+
+function VanishingM.GetVanedPlrs()
+	local vanished = {}
+	for player in pairs(VanedPlrs) do
+		if player.Parent then
+			vanished[#vanished + 1] = player
+		end
+	end
+	return vanished
+end
+
+return VanishingM]]></ProtectedString>
+						<string name="ScriptGuid">{F6D362FB-15CC-4E93-B19A-47A182E04F23}</string>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<string name="Name">VanishingM</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					</Properties>
+				</Item>
+				<Item class="Folder" referent="RBX327941B4513F428D856741B29DE46F11">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<string name="Name">Vanish</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					</Properties>
+					<Item class="RemoteEvent" referent="RBX8CA88A5813A84016BE43ADE7B31BD8A0">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<string name="Name">GiveTheVanishFF</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						</Properties>
+					</Item>
+					<Item class="RemoteEvent" referent="RBX547FD0F9A41F4B2D874BCC932F9970FA">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<string name="Name">SendToVanishFF</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						</Properties>
+					</Item>
+					<Item class="RemoteEvent" referent="RBX0768D3055BC1464694E44EAA07B4B153">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<string name="Name">GiveTheVanish</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						</Properties>
+					</Item>
+					<Item class="RemoteEvent" referent="RBXD2E12D11F66D4C7BA6D9151ECEED8673">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<string name="Name">SendToVanish</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						</Properties>
+					</Item>
+					<Item class="Folder" referent="RBX46FCD7CECBDA418DBC6DBB3EB681F5D0">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<string name="Name">VanishTemp</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						</Properties>
+					</Item>
+				</Item>
+				<Item class="LocalScript" referent="RBXE6318D63567F4737BBAD305791A29944">
+					<Properties>
+						<ProtectedString name="Source"><![CDATA[local plrname = game:GetService("Players").LocalPlayer.Name
+local remotes = game:GetService("ReplicatedStorage"):WaitForChild("Vanish")
+local GiveTheVanish = remotes:WaitForChild("GiveTheVanish")
+local GiveTheVanishFF = remotes:WaitForChild("GiveTheVanishFF")
+local SendToVanish = remotes:WaitForChild("SendToVanish")
+local SendToVanishFF = remotes:WaitForChild("SendToVanishFF")
+
+SendToVanish:FireServer(plrname, "lol") -- Turn On vanish for u
+SendToVanishFF.FireServer(plrname, "lol") -- Turn Off vanish for u]]></ProtectedString>
+						<bool name="Disabled">true</bool>
+						<Content name="LinkedSource"><null></null></Content>
+						<token name="RunContext">0</token>
+						<string name="ScriptGuid">{435A7E23-1698-4290-A7EA-E20183866F0B}</string>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<string name="Name">!! Methods to turn on vanish</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					</Properties>
+					<Item class="TextButton" referent="RBX4D641E9600ED4B2EA33A5696196C704F">
+						<Properties>
+							<Font name="FontFace">
+								<Family><url>rbxassetid://12187365364</url></Family>
+								<Weight>700</Weight>
+								<Style>Normal</Style>
+							</Font>
+							<float name="LineHeight">1</float>
+							<string name="LocalizationMatchIdentifier"></string>
+							<string name="LocalizationMatchedSourceText"></string>
+							<int name="MaxVisibleGraphemes">-1</int>
+							<string name="OpenTypeFeatures"></string>
+							<bool name="RichText">false</bool>
+							<string name="Text">Vanish: Disabled</string>
+							<Color3 name="TextColor3">
+								<R>1</R>
+								<G>0.156862751</G>
+								<B>0.0470588282</B>
+							</Color3>
+							<token name="TextDirection">0</token>
+							<bool name="TextScaled">true</bool>
+							<float name="TextSize">14</float>
+							<Color3 name="TextStrokeColor3">
+								<R>0</R>
+								<G>0</G>
+								<B>0</B>
+							</Color3>
+							<float name="TextStrokeTransparency">1</float>
+							<float name="TextTransparency">0</float>
+							<token name="TextTruncate">0</token>
+							<bool name="TextWrapped">true</bool>
+							<token name="TextXAlignment">2</token>
+							<token name="TextYAlignment">1</token>
+							<bool name="AutoButtonColor">true</bool>
+							<Ref name="HoverHapticEffect">null</Ref>
+							<bool name="Modal">false</bool>
+							<Ref name="PressHapticEffect">null</Ref>
+							<bool name="Selected">false</bool>
+							<token name="Style">2</token>
+							<bool name="Active">true</bool>
+							<Vector2 name="AnchorPoint">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<token name="AutomaticSize">0</token>
+							<Color3 name="BackgroundColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<float name="BackgroundTransparency">0</float>
+							<Color3 name="BorderColor3">
+								<R>0</R>
+								<G>0</G>
+								<B>0</B>
+							</Color3>
+							<token name="BorderMode">0</token>
+							<int name="BorderSizePixel">0</int>
+							<bool name="ClipsDescendants">false</bool>
+							<bool name="Draggable">false</bool>
+							<token name="InputSink">0</token>
+							<bool name="Interactable">true</bool>
+							<int name="LayoutOrder">0</int>
+							<Ref name="NextSelectionDown">null</Ref>
+							<Ref name="NextSelectionLeft">null</Ref>
+							<Ref name="NextSelectionRight">null</Ref>
+							<Ref name="NextSelectionUp">null</Ref>
+							<UDim2 name="Position">
+								<XS>0.103978097</XS>
+								<XO>0</XO>
+								<YS>0.34698981</YS>
+								<YO>0</YO>
+							</UDim2>
+							<float name="Rotation">0</float>
+							<bool name="Selectable">true</bool>
+							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
+							<UDim2 name="Size">
+								<XS>0.748054862</XS>
+								<XO>0</XO>
+								<YS>0.297740608</YS>
+								<YO>0</YO>
+							</UDim2>
+							<token name="SizeConstraint">0</token>
+							<bool name="Visible">true</bool>
+							<int name="ZIndex">1</int>
+							<bool name="AutoLocalize">true</bool>
+							<Ref name="RootLocalizationTable">null</Ref>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<string name="Name">ButtonTHAT</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						</Properties>
+						<Item class="LocalScript" referent="RBX2738DAE56F8A4E938989EDF996677E51">
+							<Properties>
+								<ProtectedString name="Source"><![CDATA[local check = script.Parent.Parent.Enabled
+script.Parent.MouseButton1Click:Connect(function()
+	local currentCheck = script.Parent.Parent.Enabled.Value
+	if currentCheck == false then
+		script.Parent.Text = "Vanish: Enabled"
+		script.Parent.TextColor3 = Color3.fromRGB(67, 255, 95)
+		local event = game:GetService("ReplicatedStorage"):WaitForChild("Vanish"):WaitForChild("SendToVanish")
+		local plr = game:GetService("Players").LocalPlayer
+		local plrname = game:GetService("Players").LocalPlayer.Name
+		event:FireServer(plrname, "lol")
+		script.Parent.Parent.Enabled.Value = true
+	elseif currentCheck == true then
+		script.Parent.Text = "Vanish: Disabled"
+		script.Parent.TextColor3 = Color3.fromRGB(255, 40, 12)
+		local event = game:GetService("ReplicatedStorage"):WaitForChild("Vanish"):WaitForChild("SendToVanishFF")
+		local plr = game:GetService("Players").LocalPlayer
+		local plrname = game:GetService("Players").LocalPlayer.Name
+		event:FireServer(plrname, "lol")
+		script.Parent.Parent.Enabled.Value = false
+	end
+end)]]></ProtectedString>
+								<bool name="Disabled">false</bool>
+								<Content name="LinkedSource"><null></null></Content>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{0EF6C8CA-5A44-4CC2-95E5-3FC884216803}</string>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+								<bool name="DefinesCapabilities">false</bool>
+								<string name="Name">turn</string>
+								<int64 name="SourceAssetId">-1</int64>
+								<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+							</Properties>
+						</Item>
+						<Item class="BoolValue" referent="RBX87D1473E36C24CA3B21E150094679BFE">
+							<Properties>
+								<bool name="Value">false</bool>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+								<bool name="DefinesCapabilities">false</bool>
+								<string name="Name">Enabled</string>
+								<int64 name="SourceAssetId">-1</int64>
+								<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+							</Properties>
+						</Item>
+					</Item>
+				</Item>
+				<Item class="ModuleScript" referent="RBXC2372FDA92944CD7994A8FE3215EEFC2">
+					<Properties>
+						<Content name="LinkedSource"><null></null></Content>
+						<ProtectedString name="Source"><![CDATA[return function(...)
+game:GetService("Players").PlayerAdded:Connect(function(player)
+	for i, v in pairs(game.Players:GetPlayers()) do
+		if not v:WaitForChild("PlayerGui"):FindFirstChild("VanishLocal") then
+			local temp = script.VanishLocal:Clone()
+			temp.Parent = v.PlayerGui
+			end
+		end
+	end)
+end]]></ProtectedString>
+						<string name="ScriptGuid">{7C11D6B8-94A6-4B96-8100-99E279D24218}</string>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<string name="Name">LocalSide</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					</Properties>
+					<Item class="ScreenGui" referent="RBX0402AA1B8D1E42AC8CB4AB118F9DDD0E">
+						<Properties>
+							<bool name="ClipToDeviceSafeArea">true</bool>
+							<int name="DisplayOrder">0</int>
+							<token name="SafeAreaCompatibility">1</token>
+							<token name="ScreenInsets">2</token>
+							<bool name="Enabled">true</bool>
+							<bool name="ResetOnSpawn">false</bool>
+							<token name="ZIndexBehavior">1</token>
+							<bool name="AutoLocalize">true</bool>
+							<Ref name="RootLocalizationTable">null</Ref>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<string name="Name">VanishLocal</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						</Properties>
+						<Item class="LocalScript" referent="RBX34B02B946236478EB0872465A11D65C6">
+							<Properties>
+								<ProtectedString name="Source"><![CDATA[local VanishedPlrs = {}
+local Vanish = game:GetService("ReplicatedStorage"):WaitForChild("Vanish")
+local SendToVanish = Vanish.SendToVanish
+local SendToVanishFF = Vanish.SendToVanishFF
+local GiveTheVanish = Vanish.GiveTheVanish
+local GiveTheVanishFF = Vanish.GiveTheVanishFF
+
+
+GiveTheVanish.OnClientEvent:Connect(function(plrname)
+	local localplr = game:GetService("Players").localplr
+	if plrname.Name == localplr.Name then
+		--warn("VAN! we dont destroyed yourself")
+		return
+	end
+	if not VanishedPlrs[plrname] then
+		VanishedPlrs[plrname] = {
+			OrigParent = plrname.Parent,
+			PlayerInstance = plrname
+		}
+	end
+	plrname.Parent = nil
+	--warn("VAN! Player " .. plrname.Name .. " destroyed")
+end)
+GiveTheVanishFF.OnClientEvent:Connect(function(plrname)
+	local localplr = game:GetService("Players").localplr
+	if localplr.Name == plrname.Name then
+		--warn("VAN! dont creating yourself")
+		return
+	end
+	if VanishedPlrs[plrname] then
+		local playerData = VanishedPlrs[plrname]
+		if playerData.OrigParent then
+			plrname.Parent = playerData.OrigParent
+			--warn("VAN! plr " .. plrname.Name .. " created")
+		end
+		VanishedPlrs[plrname] = nil
+	end
+end)	]]></ProtectedString>
+								<bool name="Disabled">false</bool>
+								<Content name="LinkedSource"><null></null></Content>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{74626130-7FBC-4CE6-BD1D-A98725CB4097}</string>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+								<bool name="DefinesCapabilities">false</bool>
+								<string name="Name">VanishLocal</string>
+								<int64 name="SourceAssetId">-1</int64>
+								<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+							</Properties>
+						</Item>
+					</Item>
+				</Item>
+			</Item>
+		</Item>
+		<Item class="Folder" referent="RBXDC9996D3035F4A4AA5D5B1B7A6D17D12">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<string name="Name">StarterGui</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			</Properties>
+			<Item class="ScreenGui" referent="RBXEB36A40E6EFB43B19027B521C3D95B66">
+				<Properties>
+					<bool name="ClipToDeviceSafeArea">true</bool>
+					<int name="DisplayOrder">0</int>
+					<token name="SafeAreaCompatibility">1</token>
+					<token name="ScreenInsets">2</token>
+					<bool name="Enabled">true</bool>
+					<bool name="ResetOnSpawn">true</bool>
+					<token name="ZIndexBehavior">1</token>
+					<bool name="AutoLocalize">true</bool>
+					<Ref name="RootLocalizationTable">null</Ref>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<string name="Name">d</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				</Properties>
+				<Item class="CanvasGroup" referent="RBXA715CA5B60374AC4BF06F6704EA3B24E">
+					<Properties>
+						<Color3 name="GroupColor3">
+							<R>1</R>
+							<G>1</G>
+							<B>1</B>
+						</Color3>
+						<float name="GroupTransparency">0</float>
+						<bool name="Active">false</bool>
+						<Vector2 name="AnchorPoint">
+							<X>0</X>
+							<Y>0</Y>
+						</Vector2>
+						<token name="AutomaticSize">0</token>
+						<Color3 name="BackgroundColor3">
+							<R>1</R>
+							<G>1</G>
+							<B>1</B>
+						</Color3>
+						<float name="BackgroundTransparency">0</float>
+						<Color3 name="BorderColor3">
+							<R>0</R>
+							<G>0</G>
+							<B>0</B>
+						</Color3>
+						<token name="BorderMode">0</token>
+						<int name="BorderSizePixel">0</int>
+						<bool name="ClipsDescendants">true</bool>
+						<bool name="Draggable">false</bool>
+						<token name="InputSink">0</token>
+						<bool name="Interactable">true</bool>
+						<int name="LayoutOrder">0</int>
+						<Ref name="NextSelectionDown">null</Ref>
+						<Ref name="NextSelectionLeft">null</Ref>
+						<Ref name="NextSelectionRight">null</Ref>
+						<Ref name="NextSelectionUp">null</Ref>
+						<UDim2 name="Position">
+							<XS>0.0348763466</XS>
+							<XO>0</XO>
+							<YS>0.685393274</YS>
+							<YO>0</YO>
+						</UDim2>
+						<float name="Rotation">0</float>
+						<bool name="Selectable">false</bool>
+						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
+						<UDim2 name="Size">
+							<XS>0</XS>
+							<XO>480</XO>
+							<YS>0</YS>
+							<YO>197</YO>
+						</UDim2>
+						<token name="SizeConstraint">0</token>
+						<bool name="Visible">true</bool>
+						<int name="ZIndex">1</int>
+						<bool name="AutoLocalize">true</bool>
+						<Ref name="RootLocalizationTable">null</Ref>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<string name="Name">CanvasGroup</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					</Properties>
+					<Item class="TextButton" referent="RBX1930B89519964599873BFFFDF9577BD0">
+						<Properties>
+							<Font name="FontFace">
+								<Family><url>rbxassetid://12187365364</url></Family>
+								<Weight>700</Weight>
+								<Style>Normal</Style>
+							</Font>
+							<float name="LineHeight">1</float>
+							<string name="LocalizationMatchIdentifier"></string>
+							<string name="LocalizationMatchedSourceText"></string>
+							<int name="MaxVisibleGraphemes">-1</int>
+							<string name="OpenTypeFeatures"></string>
+							<bool name="RichText">false</bool>
+							<string name="Text">Vanish: Disabled</string>
+							<Color3 name="TextColor3">
+								<R>1</R>
+								<G>0.156862751</G>
+								<B>0.0470588282</B>
+							</Color3>
+							<token name="TextDirection">0</token>
+							<bool name="TextScaled">true</bool>
+							<float name="TextSize">14</float>
+							<Color3 name="TextStrokeColor3">
+								<R>0</R>
+								<G>0</G>
+								<B>0</B>
+							</Color3>
+							<float name="TextStrokeTransparency">1</float>
+							<float name="TextTransparency">0</float>
+							<token name="TextTruncate">0</token>
+							<bool name="TextWrapped">true</bool>
+							<token name="TextXAlignment">2</token>
+							<token name="TextYAlignment">1</token>
+							<bool name="AutoButtonColor">true</bool>
+							<Ref name="HoverHapticEffect">null</Ref>
+							<bool name="Modal">false</bool>
+							<Ref name="PressHapticEffect">null</Ref>
+							<bool name="Selected">false</bool>
+							<token name="Style">2</token>
+							<bool name="Active">true</bool>
+							<Vector2 name="AnchorPoint">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<token name="AutomaticSize">0</token>
+							<Color3 name="BackgroundColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<float name="BackgroundTransparency">0</float>
+							<Color3 name="BorderColor3">
+								<R>0</R>
+								<G>0</G>
+								<B>0</B>
+							</Color3>
+							<token name="BorderMode">0</token>
+							<int name="BorderSizePixel">0</int>
+							<bool name="ClipsDescendants">false</bool>
+							<bool name="Draggable">false</bool>
+							<token name="InputSink">0</token>
+							<bool name="Interactable">true</bool>
+							<int name="LayoutOrder">0</int>
+							<Ref name="NextSelectionDown">null</Ref>
+							<Ref name="NextSelectionLeft">null</Ref>
+							<Ref name="NextSelectionRight">null</Ref>
+							<Ref name="NextSelectionUp">null</Ref>
+							<UDim2 name="Position">
+								<XS>0.103978097</XS>
+								<XO>0</XO>
+								<YS>0.34698981</YS>
+								<YO>0</YO>
+							</UDim2>
+							<float name="Rotation">0</float>
+							<bool name="Selectable">true</bool>
+							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
+							<UDim2 name="Size">
+								<XS>0.748054862</XS>
+								<XO>0</XO>
+								<YS>0.297740608</YS>
+								<YO>0</YO>
+							</UDim2>
+							<token name="SizeConstraint">0</token>
+							<bool name="Visible">true</bool>
+							<int name="ZIndex">1</int>
+							<bool name="AutoLocalize">true</bool>
+							<Ref name="RootLocalizationTable">null</Ref>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="DefinesCapabilities">false</bool>
+							<string name="Name">ButtonTHAT</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+						</Properties>
+						<Item class="LocalScript" referent="RBX3630FD31351E43FDA3F6B199D6576F74">
+							<Properties>
+								<ProtectedString name="Source"><![CDATA[local check = script.Parent.Parent.Enabled
+script.Parent.MouseButton1Click:Connect(function()
+	local currentCheck = script.Parent.Parent.Enabled.Value
+	if currentCheck == false then
+		script.Parent.Text = "Vanish: Enabled"
+		script.Parent.TextColor3 = Color3.fromRGB(67, 255, 95)
+		local event = game:GetService("ReplicatedStorage"):WaitForChild("Vanish"):WaitForChild("SendToVanish")
+		local plr = game:GetService("Players").LocalPlayer
+		local plrname = game:GetService("Players").LocalPlayer.Name
+		event:FireServer(plrname, "lol")
+		script.Parent.Parent.Enabled.Value = true
+	elseif currentCheck == true then
+		script.Parent.Text = "Vanish: Disabled"
+		script.Parent.TextColor3 = Color3.fromRGB(255, 40, 12)
+		local event = game:GetService("ReplicatedStorage"):WaitForChild("Vanish"):WaitForChild("SendToVanishFF")
+		local plr = game:GetService("Players").LocalPlayer
+		local plrname = game:GetService("Players").LocalPlayer.Name
+		event:FireServer(plrname, "lol")
+		script.Parent.Parent.Enabled.Value = false
+	end
+end)]]></ProtectedString>
+								<bool name="Disabled">false</bool>
+								<Content name="LinkedSource"><null></null></Content>
+								<token name="RunContext">0</token>
+								<string name="ScriptGuid">{7AAE5426-F3A0-4864-A123-6332B779004F}</string>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+								<bool name="DefinesCapabilities">false</bool>
+								<string name="Name">turn</string>
+								<int64 name="SourceAssetId">-1</int64>
+								<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+							</Properties>
+						</Item>
+						<Item class="BoolValue" referent="RBX231667A5A68B4C8F9B2E44BB5AC128BA">
+							<Properties>
+								<bool name="Value">false</bool>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+								<bool name="DefinesCapabilities">false</bool>
+								<string name="Name">Enabled</string>
+								<int64 name="SourceAssetId">-1</int64>
+								<SharedString name="Tags">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+							</Properties>
+						</Item>
+					</Item>
+				</Item>
+			</Item>
+		</Item>
+	</Item>
+	<SharedStrings>
+		<SharedString md5="yuZpQdnvvUBOTYh1jqZ2cA=="></SharedString>
+	</SharedStrings>
+</roblox>
